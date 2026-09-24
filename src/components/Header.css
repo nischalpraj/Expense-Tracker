@@ -1,0 +1,75 @@
+body {
+  background-color: #fbf6ed;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: #3a3345;
+  padding-bottom: 60px;
+}
+
+.ef-navbar {
+  background-color: rgba(251, 246, 237, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #eee4d6;
+  padding: 14px 0;
+}
+
+.ef-logo {
+  transform: translateX(300px);
+  display: flex;
+  align-items: center;
+}
+
+.ef-logo-text {
+  font-family: "Fredoka";
+  font-weight: 600;
+  font-size: 21px;
+  color:#6E5FA3;
+ padding-left: 10px;
+}
+
+.navbar-collapse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 200px;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-link{
+    font-size: 18px;
+    font-weight: 600;
+    color:#847C93;
+    padding:9px 36px !important;
+    margin:0 2px;
+    border-radius: 100px;
+    transition:background .15s,color .15s;  
+}
+
+.nav-link:hover{
+    background: #fff;
+    color:#3A3345;
+}
+
+.nav-link.active{
+    background: #EFEAF9;
+    color:#6E5FA3 !important;
+}
+
+.btn-ef-add{
+    background: #3A3345;
+    color:#fff;
+    border-radius: 100px;
+    font-weight: 700;
+    padding:10px 18px;
+    margin-right:180px;
+}
+
+.btn-ef-add:hover{
+    background: #000;
+    color:#fff;
+}
