@@ -6,7 +6,9 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <Outlet></Outlet>
+      <div className="container-fluid px-4">
+        <Outlet />
+      </div>
     </>
   );
 }

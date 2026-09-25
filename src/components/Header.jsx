@@ -12,7 +12,7 @@ const Header = () => {
               <img
                 src={logo}
                 alt="Logo"
-                width={"50px"}
+                width={"50px"} 
                           />
                           <span className="ef-logo-text">Expense Tracker</span>
             </a>
