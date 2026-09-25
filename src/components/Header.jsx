@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import "../components/Header.css";
 
@@ -9,12 +10,8 @@ const Header = () => {
         <nav className="navbar navbar-expand-lg ef-navbar sticky-top ">
           <div className="container-fluid">
             <a className="navbar-brand ef-logo" href="/">
-              <img
-                src={logo}
-                alt="Logo"
-                width={"50px"} 
-                          />
-                          <span className="ef-logo-text">Expense Tracker</span>
+              <img src={logo} alt="Logo" width={"50px"} />
+              <span className="ef-logo-text">Expense Tracker</span>
             </a>
             <button
               className="navbar-toggler"
@@ -29,28 +26,28 @@ const Header = () => {
             <div className="collapse navbar-collapse" id="navbarScroll">
               <ul className="navbar-nav m-auto my-2 my-lg-0 navbar-nav-scroll">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/">
+                  <NavLink className="nav-link" to="/" end>
                     Dashboard
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="transactions">
-                  Transactions
-                  </a>
+                  <NavLink className="nav-link" to="/transactions">
+                    Transactions
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/carts">
-                   Add Transaction
-                  </a>
+                  <NavLink className="nav-link" to="/add-transaction">
+                    Add Transaction
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                   Reports
-                  </a>
+                  <NavLink className="nav-link" to="/reports">
+                    Reports
+                  </NavLink>
                 </li>
               </ul>
-              <div class="d-flex align-items-center gap-3">
-                <button class="btn btn-ef-add"> + Add Transaction</button>
+              <div className="d-flex align-items-center gap-3">
+                <button className="btn btn-ef-add"> + Add Transaction</button>
               </div>
             </div>
           </div>
