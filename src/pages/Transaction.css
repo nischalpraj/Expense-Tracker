@@ -1,0 +1,17 @@
+
+.filters-card {
+  background: #fff;
+  border: 1px solid #EEE4D6;
+}
+.filters-card .form-control,
+.filters-card .form-select {
+  border-radius: 999px;
+  border-color: #EEE4D6;
+  background: #FFFDF8;
+  font-size: 14px;
+}
+.filters-card .form-control:focus,
+.filters-card .form-select:focus {
+  border-color: #9C8FC7;
+  box-shadow: 0 0 0 0.2rem var(#EFEAF9);
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './pages/Layout'
 import Dashboard from './pages/Dashbaord'
+import Transactions from './pages/Transactions'
 
 const MyRoute = () => {
   return (
@@ -11,6 +12,7 @@ const MyRoute = () => {
                   
                   <Route path='/' element={<Layout />} >
                       <Route index element={<Dashboard />}></Route>
+                      <Route path='transactions' element={<Transactions/>}/>
                       
 
             </Route>
