@@ -1,16 +1,16 @@
 import React from "react";
-import "./AddTransaction.css"
+import "./AddTransaction.css";
 const AddTransactions = () => {
   return (
     <>
-      <div className="container py-4" style={{ maxWidth: "900px" }}>
+      <div className="container py-4" style={{ maxWidth: "1200px" }}>
         <div className="mb-4">
           <h1 className="h3 mb-1">Add Transaction</h1>
           <p className="text-muted mb-0">
             Log a new bit of income or spending — it only takes a few seconds.
           </p>
         </div>
-        <div className="row g-3">
+        <div className="row g-3 justify-content-center">
           <div className="col-lg-7">
             <div className="card rounded-4 shadow-sm">
               <div className="card-body p-4">
@@ -42,6 +42,7 @@ const AddTransactions = () => {
                       ↓ Income
                     </label>
                   </div>
+                  {/* Amount and Date */}
                   <div className="row g-3 mb-1">
                     <div className="col-6">
                       <label className="form-label">
@@ -115,30 +116,17 @@ const AddTransactions = () => {
                   </div>
                   {/* Buttons */}
                   <div className="d-flex gap-2">
+                    <button type="button" className="btn btn-ef-add flex-fill">
+                      Add Transaction
+                    </button>
                     <button
                       type="button"
                       className="btn btn-outline-secondary rounded-pill flex-fill fw-bold">
                       Cancel
                     </button>
-                    <button type="button" className="btn btn-ef-add flex-fill">
-                      Add Transaction
-                    </button>
                   </div>
                 </form>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
-        <div
-          id="liveToast"
-          class="toast align-items-center border-0"
-          style={{background:"#3A3345", color:"#fff"}}>
-          <div class="d-flex">
-            <div class="toast-body" id="toastMsg">
-              Expense added!
             </div>
           </div>
         </div>
