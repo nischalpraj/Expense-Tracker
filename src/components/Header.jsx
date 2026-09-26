@@ -36,7 +36,7 @@ const Header = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/add-transaction">
+                  <NavLink className="nav-link" to="/addtransactions">
                     Add Transaction
                   </NavLink>
                 </li>

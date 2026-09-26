@@ -1,0 +1,90 @@
+.form-control,
+.form-select {
+  border-radius: 14px;
+  border-color: #eee4d6;
+  background: #fffdf8;
+  padding: 11px 14px;
+  font-size: 14.5px;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: #6e5fa3;
+  box-shadow: 0 0 0 0.2rem #efeaf9;
+}
+label.form-label {
+  font-weight: 700;
+  font-size: 13.5px;
+}
+.req {
+  color: #c85c77;
+}
+.type-toggle .btn {
+  border-radius: 999px !important;
+  font-weight: 700;
+  padding: 11px;
+  border: none;
+  background: #fffdf8;
+}
+.type-toggle {
+  background: #fffdf8;
+  border: 1px solid #eee4d6;
+  border-radius: 999px;
+  padding: 5px;
+  display: flex;
+  gap: 4px;
+}
+.btn-check:checked + .btn-income {
+  background: #6fa37a;
+  color: #fff;
+}
+.btn-check:checked + .btn-expense {
+  background: #e8879f;
+  color: #fff;
+}
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.cat-pick {
+  border: 1.5px solid #eee4d6;
+  background: #fffdf8;
+  border-radius: 13px;
+  padding: 10px 4px;
+  text-align: center;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #847c93;
+  width: 100%;
+}
+.cat-pick .em {
+  font-size: 19px;
+  display: block;
+  margin-bottom: 4px;
+}
+.btn-check:checked + .cat-pick {
+  border-color: #6e5fa3;
+  background: #efeaf9;
+  color: #6e5fa3;
+}
+.amount-wrap {
+  position: relative;
+}
+.amount-wrap .cur {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #847c93;
+  font-weight: 700;
+  z-index: 5;
+}
+.amount-wrap input {
+  padding-left: 28px;
+}
+
+.preview-note {
+  background: #fffdf8;
+  border: 1px dashed #eee4d6;
+  border-radius: 18px;
+}

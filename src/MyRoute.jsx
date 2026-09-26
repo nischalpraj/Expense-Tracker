@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './pages/Layout'
 import Dashboard from './pages/Dashbaord'
 import Transactions from './pages/Transactions'
+import AddTransactions from './pages/AddTransactions'
 
 const MyRoute = () => {
   return (
@@ -12,7 +13,8 @@ const MyRoute = () => {
                   
                   <Route path='/' element={<Layout />} >
                       <Route index element={<Dashboard />}></Route>
-                      <Route path='transactions' element={<Transactions/>}/>
+                      <Route path='transactions' element={<Transactions />} />
+                      <Route path='addtransactions' element={<AddTransactions/>}/>
                       
 
             </Route>
