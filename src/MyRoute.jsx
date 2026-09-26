@@ -4,6 +4,7 @@ import Layout from './pages/Layout'
 import Dashboard from './pages/Dashbaord'
 import Transactions from './pages/Transactions'
 import AddTransactions from './pages/AddTransactions'
+import Reports from './pages/Reports'
 
 const MyRoute = () => {
   return (
@@ -15,7 +16,7 @@ const MyRoute = () => {
                       <Route index element={<Dashboard />}></Route>
                       <Route path='transactions' element={<Transactions />} />
                       <Route path='addtransactions' element={<AddTransactions/>}/>
-                      
+                      <Route path='reports' element={<Reports/>}/>
 
             </Route>
           </Routes>
