@@ -1,64 +1,72 @@
 import React from "react";
 import "./Transaction.css"
+import { useNavigate } from "react-router-dom";
 
 const Transactions = () => {
+
+    const navigate = useNavigate()
+
   return (
     <>
       <div class="container py-4" style={{ maxWidth: "1180px" }}>
         <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
           <div>
-            <h1 class="h3 mb-1">Transactions</h1>
+            <h1 class="h3 mb-1" style={{ fontFamily: "Plus Jakarta Sans" }}>
+              Transactions
+            </h1>
             <p class="text-muted mb-0">
               Manage and review all your income and expenses.
             </p>
           </div>
-          <button class="btn btn-ef-add">+ Add Transaction</button>
+          <button class="btn btn-ef-add" onClick={()=> navigate('/addtransactions')}>+ Add Transaction</button>
         </div>
         <div className="card filters-card rounded-4 shadow-sm mb-3 border">
-  <div className="card-body p-3">
-    <div className="d-flex flex-wrap align-items-center gap-2">
-      <div className="position-relative flex-grow-1" style={{ minWidth: "220px" }}>
-        <span
-          className="position-absolute top-50 start-0 translate-middle-y ps-3"
-          style={{ zIndex: 5 }}>
-          🔍
-        </span>
-        <input
-          type="text"
-          id="searchInput"
-          className="form-control rounded-pill ps-5"
-          placeholder="Search by description…"
-        />
-      </div>
+          <div className="card-body p-3">
+            <div className="d-flex flex-wrap align-items-center gap-2">
+              <div
+                className="position-relative flex-grow-1"
+                style={{ minWidth: "220px" }}>
+                <span
+                  className="position-absolute top-50 start-0 translate-middle-y ps-3"
+                  style={{ zIndex: 5 }}>
+                  🔍
+                </span>
+                <input
+                  type="text"
+                  id="searchInput"
+                  className="form-control rounded-pill ps-5"
+                  placeholder="Search by description…"
+                />
+              </div>
 
-      <select
-        id="typeFilter"
-        className="form-select rounded-pill flex-shrink-0"
-        style={{ width: "auto" }}>
-        <option value="all">All types</option>
-        <option value="income">Income</option>
-        <option value="expense">Expense</option>
-      </select>
+              <select
+                id="typeFilter"
+                className="form-select rounded-pill flex-shrink-0"
+                style={{ width: "auto" }}>
+                <option value="all">All types</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+              </select>
 
-      <select
-        id="catFilter"
-        className="form-select rounded-pill flex-shrink-0"
-        style={{ width: "auto" }}>
-        <option value="all">All categories</option>
-      </select>
+              <select
+                id="catFilter"
+                className="form-select rounded-pill flex-shrink-0"
+                style={{ width: "auto" }}>
+                <option value="all">All categories</option>
+              </select>
 
-      <select
-        id="sortFilter"
-        className="form-select rounded-pill flex-shrink-0"
-        style={{ width: "auto" }}>
-        <option value="newest">Newest first</option>
-        <option value="oldest">Oldest first</option>
-        <option value="high">Amount: High to Low</option>
-        <option value="low">Amount: Low to High</option>
-      </select>
-    </div>
-  </div>
-</div>
+              <select
+                id="sortFilter"
+                className="form-select rounded-pill flex-shrink-0"
+                style={{ width: "auto" }}>
+                <option value="newest">Newest first</option>
+                <option value="oldest">Oldest first</option>
+                <option value="high">Amount: High to Low</option>
+                <option value="low">Amount: Low to High</option>
+              </select>
+            </div>
+          </div>
+        </div>
         <div class="card rounded-4x shadow-sm d-none d-md-block" id="tableCard">
           <div class="card-body p-4">
             <div class="table-responsive">

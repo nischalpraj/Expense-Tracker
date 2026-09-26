@@ -5,7 +5,9 @@ const AddTransactions = () => {
     <>
       <div className="container py-4" style={{ maxWidth: "1200px" }}>
         <div className="mb-4">
-          <h1 className="h3 mb-1">Add Transaction</h1>
+          <h1 className="h3 mb-1" style={{ fontFamily: "Plus Jakarta Sans" }}>
+            Add Transaction
+          </h1>
           <p className="text-muted mb-0">
             Log a new bit of income or spending — it only takes a few seconds.
           </p>

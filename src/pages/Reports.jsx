@@ -1,11 +1,14 @@
 import React from "react";
+import './Report.css'
 
 const Reports = () => {
   return (
     <>
       <div className="container py-4" style={{ maxWidth: "1180px" }}>
         <div className="mb-4">
-          <h1 className="h3 mb-1">Reports</h1>
+          <h1 className="h3 mb-1" style={{ fontFamily: "Plus Jakarta Sans" }}>
+            Reports
+          </h1>
           <p className="text-muted mb-0">
             A closer look at your spending habits.
           </p>

@@ -1,7 +1,13 @@
 import React from "react";
 import "./Dashboard.css";
+import { useNavigate } from "react-router-dom";
+import AddTransactions from "./AddTransactions";
 
 const Dashbaord = () => {
+
+    const navigate = useNavigate();
+
+
   return (
     <>
       <div className="container py-4" style={{ maxWidth: "1180px" }}>
@@ -336,10 +342,10 @@ const Dashbaord = () => {
                 </div>
 
                 <div className="d-flex gap-2 mt-3">
-                  <button className="btn btn-outline-secondary rounded-pill flex-fill fw-bold btn-sm">
+                  <button className="btn btn-outline-secondary rounded-pill flex-fill fw-bold btn-sm" onClick={()=> navigate('/transactions')}>
                     View All Transactions
                   </button>
-                  <button className="btn btn-ef-add flex-fill">
+                  <button className="btn btn-ef-add flex-fill" onClick={()=> navigate("/addtransactions")}>
                     + Add Transaction
                   </button>
                 </div>

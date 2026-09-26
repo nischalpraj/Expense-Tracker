@@ -1,9 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import "../components/Header.css";
 
 const Header = () => {
+
+const navigate=useNavigate()
+
   return (
     <>
       <header className="px-4">
@@ -47,7 +50,7 @@ const Header = () => {
                 </li>
               </ul>
               <div className="d-flex align-items-center gap-3">
-                <button className="btn btn-ef-add"> + Add Transaction</button>
+                <button className="btn btn-ef-add" onClick={()=> navigate('/addtransactions')}> + Add Transaction</button>
               </div>
             </div>
           </div>
