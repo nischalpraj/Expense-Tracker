@@ -1,6 +1,77 @@
 import React from "react";
+import { useState } from "react";
+import expenseData from "../data/expenses.json";
 import "./AddTransaction.css";
-const AddTransactions = () => {
+
+const AddTransactions = ({ onAdd }) => {
+  const [type, setType] = useState("expense");
+
+  const [selectedcategory, setSelectedCategory] = useState("");
+
+  const currentCategory = expenseData.categories[type];
+
+  const [amount, setAmount] = useState("");
+
+  const [date, setDate] = useState("");
+
+  const [description, setDescription] = useState("");
+
+  const [amountError, setAmountError] = useState(false);
+
+  const [dateError, setDateError] = useState(false);
+
+  const [descError, setDescError] = useState(false);
+
+  const [categoryError, setCategoryError] = useState(false);
+
+  function handleSubmit() {
+    let hasError = false;
+
+    if (isNaN(amount) || Number(amount) <= 0) {
+      setAmountError(true);
+      hasError = true;
+    } else {
+      setAmountError(false);
+    }
+    if (date === "") {
+      setDateError(true);
+      hasError = true;
+    } else {
+      setDateError(false);
+    }
+    if (description.trim() === "") {
+      setDescError(true);
+      hasError = true;
+    } else {
+      setDescError(false);
+    }
+    if (selectedcategory === "") {
+      setCategoryError(true);
+      hasError = true;
+    } else {
+      setCategoryError(false);
+    }
+    if (hasError) {
+      return;
+    }
+
+    const newTransaction = {
+      id: Date.now(),
+      type: type,
+      category: selectedcategory,
+      description: description.trim(),
+      date: date,
+      amount: Number(amount),
+    };
+
+    onAdd(newTransaction);
+
+    setAmount("");
+    setDate("");
+    setDescription("");
+    setSelectedCategory("");
+  }
+
   return (
     <>
       <div className="container py-4" style={{ maxWidth: "1200px" }}>
@@ -23,7 +94,11 @@ const AddTransactions = () => {
                       className="btn-check"
                       name="txType"
                       id="typeExpense"
-                      defaultChecked
+                      checked={type === "expense"}
+                      onChange={() => {
+                        setType("expense");
+                        setSelectedCategory("");
+                      }}
                     />
                     <label
                       className="btn cat-pick btn-expense flex-fill"
@@ -36,6 +111,11 @@ const AddTransactions = () => {
                       className="btn-check"
                       name="txType"
                       id="typeIncome"
+                      checked={type === "income"}
+                      onChange={() => {
+                        setType("income");
+                        setSelectedCategory("");
+                      }}
                     />
                     <label
                       className="btn cat-pick btn-income flex-fill"
@@ -44,7 +124,6 @@ const AddTransactions = () => {
                       ↓ Income
                     </label>
                   </div>
-                  {/* Amount and Date */}
                   <div className="row g-3 mb-1">
                     <div className="col-6">
                       <label className="form-label">
@@ -58,12 +137,18 @@ const AddTransactions = () => {
                           id="inputAmount"
                           placeholder="0.00"
                           inputMode="decimal"
+                          value={amount}
+                          onChange={(e) => {
+                            setAmount(e.target.value);
+                            if (Number(e.target.value) > 0) {
+                              setAmountError(false);
+                            }
+                          }}
                         />
                       </div>
                       <div
-                        className="invalid-feedback d-block"
-                        id="errAmount"
-                        style={{ display: "none" }}>
+                        className={`invalid-feedback ${amountError ? "d-block" : ""}`}
+                        id="errAmount">
                         ⚠ Enter a valid amount greater than $0
                       </div>
                     </div>
@@ -75,12 +160,17 @@ const AddTransactions = () => {
                         type="date"
                         className="form-control"
                         id="inputDate"
-                        defaultValue="2026-09-22"
+                        value={date}
+                        onChange={(e) => {
+                          setDate(e.target.value);
+                          if (e.target.value !== "") {
+                            setDateError(false);
+                          }
+                        }}
                       />
                       <div
-                        className="invalid-feedback d-block"
-                        id="errDate"
-                        style={{ display: "none" }}>
+                        className={`invalid-feedback ${dateError ? "d-block" : ""}`}
+                        id="errDate">
                         ⚠ Please pick a date
                       </div>
                     </div>
@@ -90,11 +180,30 @@ const AddTransactions = () => {
                     <label className="form-label">
                       Category <span className="req">*</span>
                     </label>
-                    <div className="cat-grid" id="catGrid"></div>
+                    <div className="cat-grid" id="catGrid">
+                      {currentCategory.map((cat) => (
+                        <div key={cat.name}>
+                          <input
+                            type="radio"
+                            className="btn-check"
+                            name="category"
+                            id={cat.name}
+                            checked={cat.name === selectedcategory}
+                            onChange={() => {
+                              setSelectedCategory(cat.name);
+                              setCategoryError(false);
+                            }}
+                          />
+                          <label className="cat-pick" htmlFor={cat.name}>
+                            <span className="em">{cat.icon}</span>
+                            {cat.name}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
                     <div
-                      className="invalid-feedback d-block"
-                      id="errCategory"
-                      style={{ display: "none" }}>
+                      className={`invalid-feedback ${categoryError ? "d-block" : ""}`}
+                      id="errCategory">
                       ⚠ Choose a category
                     </div>
                   </div>
@@ -108,22 +217,37 @@ const AddTransactions = () => {
                       className="form-control"
                       id="inputDesc"
                       placeholder="e.g. Lunch with friends"
+                      value={description}
+                      onChange={(e) => {
+                        setDescription(e.target.value);
+                        if (e.target.value.trim() !== "") {
+                          setDescError(false);
+                        }
+                      }}
                     />
                     <div
-                      className="invalid-feedback d-block"
-                      id="errDesc"
-                      style={{ display: "none" }}>
+                      className={`invalid-feedback ${descError ? "d-block" : ""}`}
+                      id="errDesc">
                       ⚠ A short description helps you remember this later
                     </div>
                   </div>
                   {/* Buttons */}
                   <div className="d-flex gap-2">
-                    <button type="button" className="btn btn-ef-add flex-fill">
+                    <button
+                      type="button"
+                      className="btn btn-ef-add flex-fill"
+                      onClick={() => handleSubmit()}>
                       Add Transaction
                     </button>
                     <button
                       type="button"
-                      className="btn btn-outline-secondary rounded-pill flex-fill fw-bold">
+                      className="btn btn-outline-secondary rounded-pill flex-fill fw-bold"
+                      onClick={() => {
+                        setAmount("");
+                        setDate("");
+                        setDescription("");
+                        setSelectedCategory("");
+                      }}>
                       Cancel
                     </button>
                   </div>
