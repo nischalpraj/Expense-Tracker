@@ -11,7 +11,7 @@ const navigate=useNavigate()
     <>
       <header className="px-4">
         <nav className="navbar navbar-expand-lg ef-navbar sticky-top ">
-          <div className="container-fluid">
+          <div className="container" style={{ maxWidth: "1180px" }}>
             <a className="navbar-brand ef-logo" href="/">
               <img src={logo} alt="Logo" width={"50px"} />
               <span className="ef-logo-text">Expense Tracker</span>
@@ -27,7 +27,7 @@ const navigate=useNavigate()
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarScroll">
-              <ul className="navbar-nav m-auto my-2 my-lg-0 navbar-nav-scroll">
+              <ul className="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll">
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/" end>
                     Dashboard
@@ -50,7 +50,12 @@ const navigate=useNavigate()
                 </li>
               </ul>
               <div className="d-flex align-items-center gap-3">
-                <button className="btn btn-ef-add" onClick={()=> navigate('/addtransactions')}> + Add Transaction</button>
+                <button
+                  className="btn btn-ef-add"
+                  onClick={() => navigate("/addtransactions")}>
+                  {" "}
+                  + Add Transaction
+                </button>
               </div>
             </div>
           </div>

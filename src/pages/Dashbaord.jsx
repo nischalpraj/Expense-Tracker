@@ -1,7 +1,7 @@
 import React from "react";
 import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
-import AddTransactions from "./AddTransactions";
+
 
 const Dashbaord = () => {
 
