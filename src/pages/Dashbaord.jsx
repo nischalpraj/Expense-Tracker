@@ -1,12 +1,58 @@
 import React from "react";
 import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
+import expenseData from '../data/expenses.json'
 
 
-const Dashbaord = () => {
+const Dashbaord = ({transaction}) => {
 
     const navigate = useNavigate();
 
+    const chartColors = [
+      "#E8A968",
+      "#E8879F",
+      "#9C8FC7",
+      "#E39A93",
+      "#6FA37A",
+      "#B7ABC4",
+      "#8FA8D9",
+    ];
+
+    const totalIncome = transaction
+      .filter((t) => t.type === "income")
+      .reduce((total, t) => total + t.amount, 0);
+
+    const totalExpense = transaction
+      .filter((t) => t.type === "expense")
+      .reduce((total, t) => total + t.amount, 0);
+
+    const balance = totalIncome - totalExpense;
+
+    const recentTransactions = [...transaction]
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 3);
+    
+    const categoryIconMap = {};
+    [
+      ...expenseData.categories.expense,
+      ...expenseData.categories.income,
+    ].forEach((cat) => {
+      categoryIconMap[cat.name] = cat.icon;
+    });
+
+    const categoryTotals = transaction
+      .filter((t) => t.type === "expense")
+      .reduce((totals, t) => {
+        if (!totals[t.category]) {
+          totals[t.category] = 0;
+        }
+        totals[t.category] += t.amount;
+        return totals;
+      }, {});
+    
+    const categoryList = Object.entries(categoryTotals).sort(
+      (a, b) => b[1] - a[1],
+    );
 
   return (
     <>
@@ -24,7 +70,7 @@ const Dashbaord = () => {
             <div class="text-muted small fw-bold text-uppercase">
               Current Balance
             </div>
-            <div class="balance">$980</div>
+            <div class="balance">${balance}</div>
             <div class="text-muted small">
               Income − Expenses · looking healthy 🌿
             </div>
@@ -44,7 +90,7 @@ const Dashbaord = () => {
                   </span>
                 </div>
                 <div class="text-muted small fw-bold">Current Balance</div>
-                <div class="stat-amount">$980</div>
+                <div class="stat-amount">${balance}</div>
               </div>
             </div>
           </div>
@@ -60,7 +106,7 @@ const Dashbaord = () => {
                   </span>
                 </div>
                 <div class="text-muted small fw-bold">Total Income</div>
-                <div class="stat-amount">$1,700</div>
+                <div class="stat-amount">${totalIncome}</div>
               </div>
             </div>
           </div>
@@ -76,7 +122,7 @@ const Dashbaord = () => {
                   </span>
                 </div>
                 <div class="text-muted small fw-bold">Total Expenses</div>
-                <div class="stat-amount">$720</div>
+                <div class="stat-amount">${totalExpense}</div>
               </div>
             </div>
           </div>
@@ -196,51 +242,22 @@ const Dashbaord = () => {
                   <ul
                     className="list-unstyled flex-grow-1 mb-0"
                     style={{ minWidth: "160px" }}>
-                    <li className="d-flex justify-content-between small mb-2">
-                      <span>
-                        <span
-                          className="dot me-2"
-                          style={{ background: "#E8A968" }}></span>
-                        Bills
-                      </span>
-                      <span className="text-muted fw-bold">$254</span>
-                    </li>
-                    <li className="d-flex justify-content-between small mb-2">
-                      <span>
-                        <span
-                          className="dot me-2"
-                          style={{ background: "#E8879F" }}></span>
-                        Food
-                      </span>
-                      <span className="text-muted fw-bold">$173</span>
-                    </li>
-                    <li className="d-flex justify-content-between small mb-2">
-                      <span>
-                        <span
-                          className="dot me-2"
-                          style={{ background: "#9C8FC7" }}></span>
-                        Shopping
-                      </span>
-                      <span className="text-muted fw-bold">$105</span>
-                    </li>
-                    <li className="d-flex justify-content-between small mb-2">
-                      <span>
-                        <span
-                          className="dot me-2"
-                          style={{ background: "#6FA37A" }}></span>
-                        Transport
-                      </span>
-                      <span className="text-muted fw-bold">$50</span>
-                    </li>
-                    <li className="d-flex justify-content-between small mb-0">
-                      <span>
-                        <span
-                          className="dot me-2"
-                          style={{ background: "#B7ABC4" }}></span>
-                        Other
-                      </span>
-                      <span className="text-muted fw-bold">$45</span>
-                    </li>
+                    {categoryList.map(([name, amount], index) => (
+                      <li
+                        key={name}
+                        className="d-flex justify-content-between small mb-2">
+                        <span>
+                          <span
+                            className="dot me-2"
+                            style={{
+                              background:
+                                chartColors[index % chartColors.length],
+                            }}></span>
+                          {name}
+                        </span>
+                        <span className="text-muted fw-bold">${amount}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -310,42 +327,40 @@ const Dashbaord = () => {
                 <h2 className="h6 mb-0">Recent Transactions</h2>
                 <p className="text-muted small mb-3">Your latest activity</p>
 
-                <div className="d-flex align-items-center gap-3 py-2 border-bottom">
-                  <div className="tx-icon c-food">🍜</div>
-                  <div className="flex-grow-1">
-                    <div className="fw-bold small">Weekly groceries</div>
-                    <div className="text-muted" style={{ fontSize: "12.5px" }}>
-                      Food · Sep 14
+                {recentTransactions.map((t) => (
+                  <div
+                    key={t.id}
+                    className="d-flex align-items-center gap-3 py-2 border-bottom">
+                    <div
+                      className={`tx-icon ${t.type === "income" ? "c-income" : "c-expense"}`}>
+                      {categoryIconMap[t.category] || "🧾"}
+                    </div>
+                    <div className="flex-grow-1">
+                      <div className="fw-bold small">{t.description}</div>
+                      <div
+                        className="text-muted"
+                        style={{ fontSize: "12.5px" }}>
+                        {t.category} · {t.date}
+                      </div>
+                    </div>
+                    <div
+                      className={
+                        t.type === "income" ? "tx-amt-income" : "tx-amt-expense"
+                      }>
+                      {t.type === "income" ? "+" : "-"}${t.amount}
                     </div>
                   </div>
-                  <div className="tx-amt-expense">-$120</div>
-                </div>
-                <div className="d-flex align-items-center gap-3 py-2 border-bottom">
-                  <div className="tx-icon c-salary">💼</div>
-                  <div className="flex-grow-1">
-                    <div className="fw-bold small">Monthly salary</div>
-                    <div className="text-muted" style={{ fontSize: "12.5px" }}>
-                      Salary · Sep 1
-                    </div>
-                  </div>
-                  <div className="tx-amt-income">+$1,500</div>
-                </div>
-                <div className="d-flex align-items-center gap-3 py-2">
-                  <div className="tx-icon c-bills">💡</div>
-                  <div className="flex-grow-1">
-                    <div className="fw-bold small">Insurance</div>
-                    <div className="text-muted" style={{ fontSize: "12.5px" }}>
-                      Bills · Sep 28
-                    </div>
-                  </div>
-                  <div className="tx-amt-expense">-$74</div>
-                </div>
+                ))}
 
                 <div className="d-flex gap-2 mt-3">
-                  <button className="btn btn-outline-secondary rounded-pill flex-fill fw-bold btn-sm" onClick={()=> navigate('/transactions')}>
+                  <button
+                    className="btn btn-outline-secondary rounded-pill flex-fill fw-bold btn-sm"
+                    onClick={() => navigate("/transactions")}>
                     View All Transactions
                   </button>
-                  <button className="btn btn-ef-add flex-fill" onClick={()=> navigate("/addtransactions")}>
+                  <button
+                    className="btn btn-ef-add flex-fill"
+                    onClick={() => navigate("/addtransactions")}>
                     + Add Transaction
                   </button>
                 </div>
