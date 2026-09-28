@@ -16,33 +16,33 @@ const Dashboard = ({ transaction }) => {
     "#8FA8D9",
   ];
 
-const latestDate = transaction.length
-  ? new Date(Math.max(...transaction.map((t) => new Date(t.date))))
-  : new Date();
+  const latestDate = transaction.length
+    ? new Date(Math.max(...transaction.map((t) => new Date(t.date))))
+    : new Date();
 
-const currentMonthTx = transaction.filter((t) => {
-  const d = new Date(t.date);
-  return (
-    d.getMonth() === latestDate.getMonth() &&
-    d.getFullYear() === latestDate.getFullYear()
-  );
-});
+  const currentMonthTx = transaction.filter((t) => {
+    const d = new Date(t.date);
+    return (
+      d.getMonth() === latestDate.getMonth() &&
+      d.getFullYear() === latestDate.getFullYear()
+    );
+  });
 
-const totalIncome = currentMonthTx
-  .filter((t) => t.type === "income")
-  .reduce((total, t) => total + t.amount, 0);
-
-const totalExpense = currentMonthTx
-  .filter((t) => t.type === "expense")
-  .reduce((total, t) => total + t.amount, 0);
-
-const balance =
-  transaction
+  const totalIncome = currentMonthTx
     .filter((t) => t.type === "income")
-    .reduce((s, t) => s + t.amount, 0) -
-  transaction
+    .reduce((total, t) => total + t.amount, 0);
+
+  const totalExpense = currentMonthTx
     .filter((t) => t.type === "expense")
-    .reduce((s, t) => s + t.amount, 0);
+    .reduce((total, t) => total + t.amount, 0);
+
+  const balance =
+    transaction
+      .filter((t) => t.type === "income")
+      .reduce((s, t) => s + t.amount, 0) -
+    transaction
+      .filter((t) => t.type === "expense")
+      .reduce((s, t) => s + t.amount, 0);
   const recentTransactions = [...transaction]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 3);
@@ -55,12 +55,12 @@ const balance =
     },
   );
 
- const categoryTotals = currentMonthTx
-   .filter((t) => t.type === "expense")
-   .reduce((totals, t) => {
-     totals[t.category] = (totals[t.category] || 0) + t.amount;
-     return totals;
-   }, {});
+  const categoryTotals = currentMonthTx
+    .filter((t) => t.type === "expense")
+    .reduce((totals, t) => {
+      totals[t.category] = (totals[t.category] || 0) + t.amount;
+      return totals;
+    }, {});
 
   const categoryList = Object.entries(categoryTotals).sort(
     (a, b) => b[1] - a[1],
@@ -128,23 +128,23 @@ const balance =
     return acc;
   }, {});
 
- const monthlyChartData = allMonths
-   .map((label) => {
-     const live = monthlyFromLive[label];
-     const fallback = expenseData.monthlySummaries[label];
+  const monthlyChartData = allMonths
+    .map((label) => {
+      const live = monthlyFromLive[label];
+      const fallback = expenseData.monthlySummaries[label];
 
-     if (!live && !fallback) {
-       return null;
-     }
+      if (!live && !fallback) {
+        return null;
+      }
 
-     return {
-       label,
-       income: live ? live.income : fallback.income,
-       expense: live ? live.expense : fallback.expense,
-     };
-   })
-   .filter((m) => m !== null)
-   .slice(-4);
+      return {
+        label,
+        income: live ? live.income : fallback.income,
+        expense: live ? live.expense : fallback.expense,
+      };
+    })
+    .filter((m) => m !== null)
+    .slice(-4);
 
   const maxValue = Math.max(
     ...monthlyChartData.map((m) => m.income),
