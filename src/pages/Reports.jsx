@@ -1,7 +1,132 @@
 import React from "react";
 import './Report.css'
+import { useState } from "react";
+import expenseData from '../data/expenses.json'
 
-const Reports = () => {
+const Reports = ({ transaction }) => {
+    
+   const allMonths = [
+     "Jan",
+     "Feb",
+     "Mar",
+     "Apr",
+     "May",
+     "Jun",
+     "Jul",
+     "Aug",
+     "Sep",
+     "Oct",
+     "Nov",
+     "Dec",
+    ];
+
+      const monthlyFromLive = transaction.reduce((acc, t) => {
+        const monthLabel = allMonths[new Date(t.date).getMonth()];
+
+        if (!acc[monthLabel]) {
+          acc[monthLabel] = {
+            income: 0,
+            expense: 0,
+          };
+        }
+
+        if (t.type === "income") {
+          acc[monthLabel].income += t.amount;
+        } else {
+          acc[monthLabel].expense += t.amount;
+        }
+
+        return acc;
+      }, {});
+
+      const monthlyChartData = allMonths
+        .map((label) => {
+          const live = monthlyFromLive[label];
+          const fallback = expenseData.monthlySummaries[label];
+
+          if (!live && !fallback) {
+            return null;
+          }
+
+          return {
+            label,
+            income: live ? live.income : fallback.income,
+            expense: live ? live.expense : fallback.expense,
+          };
+        })
+        .filter((m) => m !== null);
+    
+    const maxExpense = Math.max(...monthlyChartData.map((m) => m.expense), 1);
+
+    const [month, setMonth] = useState("Sep");
+    
+      const monthTransactions = transaction.filter(
+        (t) => allMonths[new Date(t.date).getMonth()] === month,
+    );
+    
+     const totalIncome = monthTransactions
+       .filter((t) => t.type === "income")
+       .reduce((total, t) => total + t.amount, 0);
+
+     const totalExpense = monthTransactions
+       .filter((t) => t.type === "expense")
+       .reduce((total, t) => total + t.amount, 0);
+   
+    
+     const categoryTotals = monthTransactions
+       .filter((t) => t.type === "expense")
+       .reduce((totals, t) => {
+         if (!totals[t.category]) {
+           totals[t.category] = 0;
+         }
+
+         totals[t.category] += t.amount;
+
+         return totals;
+       }, {});
+
+     const categoryList = Object.entries(categoryTotals).sort(
+       (a, b) => b[1] - a[1],
+    );
+    
+      const chartColors = [
+        "#E8A968",
+        "#E8879F",
+        "#9C8FC7",
+        "#E39A93",
+        "#6FA37A",
+        "#B7ABC4",
+        "#8FA8D9",
+    ];
+    
+      const circumference = 2 * Math.PI * 70;
+
+      const pieSegments = categoryList.reduce(
+        (acc, [name, amount], index) => {
+          const percent = amount / totalExpense;
+          const arcLength = percent * circumference;
+
+          const segment = {
+            name,
+            amount,
+            color: chartColors[index % chartColors.length],
+            dasharray: `${arcLength} ${circumference}`,
+            dashoffset: -acc.offset,
+          };
+
+          return {
+            segments: [...acc.segments, segment],
+            offset: acc.offset + arcLength,
+          };
+        },
+        { segments: [], offset: 0 },
+      ).segments;
+
+     const net = totalIncome - totalExpense;
+     const count = monthTransactions.length;
+     const topCategory = categoryList[0]?.[0] || "None";
+  
+
   return (
     <>
       <div className="container py-4" style={{ maxWidth: "1180px" }}>
@@ -17,21 +142,25 @@ const Reports = () => {
         <div className="d-flex align-items-center gap-2 mb-4">
           <span className="fw-bold small text-muted">Viewing:</span>
 
-          <select className="form-select month-select" id="monthSelect">
+          <select
+            className="form-select month-select"
+            id="monthSelect"
+            value={month}
+            onChange={(e) => {
+              setMonth(e.target.value);
+            }}>
             <option value="Jan">January</option>
             <option value="Feb">February</option>
-            <option value="March">March</option>
+            <option value="Mar">March</option>
             <option value="Apr">April</option>
             <option value="May">May</option>
             <option value="Jun">June</option>
             <option value="Jul">July</option>
             <option value="Aug">August</option>
-            <option value="Sep" defaultValue="Sep">
-              September
-            </option>
+            <option value="Sep">September</option>
             <option value="Oct">October</option>
             <option value="Nov">November</option>
-            <option valule="Dec">December</option>
+            <option value="Dec">December</option>
           </select>
         </div>
 
@@ -39,11 +168,26 @@ const Reports = () => {
           <div className="card-body p-4">
             <h2 className="h6 mb-0">Monthly Summary</h2>
 
-            <p className="text-muted small mb-3">September at a glance</p>
+            <p className="text-muted small mb-3">{month} at a glance</p>
 
             <div
               className="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-2"
-              id="monthSummaryGrid"></div>
+              id="monthSummaryGrid">
+              {[
+                { label: "Income", value: `$${totalIncome}` },
+                { label: "Expenses", value: `$${totalExpense}` },
+                { label: "Net Balance", value: `$${net}` },
+                { label: "Transactions", value: `${count}` },
+                { label: "Top Category", value: `${topCategory}` },
+              ].map((item) => (
+                <div className="col" key={item.label}>
+                  <div className="msum-item">
+                    <div className="l">{item.label}</div>
+                    <div className="v">{item.value}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -69,136 +213,51 @@ const Reports = () => {
                       cy="88"
                       r="70"
                       fill="none"
-                      stroke="var(--border)"
+                      stroke="#EEE4D6"
                       strokeWidth="26"
                     />
 
                     <g transform="rotate(-90 88 88)">
-                      <circle
-                        cx="88"
-                        cy="88"
-                        r="70"
-                        fill="none"
-                        stroke="#E8A968"
-                        strokeWidth="26"
-                        strokeDasharray="155.2 439.8"
-                        strokeDashoffset="0"
-                      />
-
-                      <circle
-                        cx="88"
-                        cy="88"
-                        r="70"
-                        fill="none"
-                        stroke="#E8879F"
-                        strokeWidth="26"
-                        strokeDasharray="105.7 439.8"
-                        strokeDashoffset="-155.2"
-                      />
-
-                      <circle
-                        cx="88"
-                        cy="88"
-                        r="70"
-                        fill="none"
-                        stroke="#9C8FC7"
-                        strokeWidth="26"
-                        strokeDasharray="64.1 439.8"
-                        strokeDashoffset="-260.9"
-                      />
-
-                      <circle
-                        cx="88"
-                        cy="88"
-                        r="70"
-                        fill="none"
-                        stroke="#E39A93"
-                        strokeWidth="26"
-                        strokeDasharray="39.7 439.8"
-                        strokeDashoffset="-325"
-                      />
-
-                      <circle
-                        cx="88"
-                        cy="88"
-                        r="70"
-                        fill="none"
-                        stroke="#6FA37A"
-                        strokeWidth="26"
-                        strokeDasharray="30.5 439.8"
-                        strokeDashoffset="-364.7"
-                      />
-
-                      <circle
-                        cx="88"
-                        cy="88"
-                        r="70"
-                        fill="none"
-                        stroke="#B7ABC4"
-                        strokeWidth="26"
-                        strokeDasharray="27.5 439.8"
-                        strokeDashoffset="-395.2"
-                      />
-
-                      <circle
-                        cx="88"
-                        cy="88"
-                        r="70"
-                        fill="none"
-                        stroke="#8FA8D9"
-                        strokeWidth="26"
-                        strokeDasharray="17.1 439.8"
-                        strokeDashoffset="-422.7"
-                      />
+                      {pieSegments.map((seg) => (
+                        <circle
+                          key={seg.name}
+                          cx="88"
+                          cy="88"
+                          r="70"
+                          fill="none"
+                          stroke={seg.color}
+                          strokeWidth="26"
+                          strokeDasharray={seg.dasharray}
+                          strokeDashoffset={seg.dashoffset}
+                        />
+                      ))}
                     </g>
                   </svg>
 
                   <ul
                     className="list-unstyled flex-grow-1 mb-0"
                     style={{ minWidth: "160px" }}>
-                    <li className="d-flex justify-content-between small mb-2">
-                      <span>
-                        <span
-                          className="dot me-2"
-                          style={{ background: "#E8A968" }}></span>
-                        Bills
-                      </span>
+                    {categoryList.map(([name, amount], index) => {
+                      const percent = Math.round((amount / totalExpense) * 100);
 
-                      <span className="text-muted fw-bold">35%</span>
-                    </li>
+                      return (
+                        <li
+                          key={name}
+                          className="d-flex justify-content-between small mb-2">
+                          <span>
+                            <span
+                              className="dot me-2"
+                              style={{
+                                background:
+                                  chartColors[index % chartColors.length],
+                              }}></span>
+                            {name}
+                          </span>
 
-                    <li className="d-flex justify-content-between small mb-2">
-                      <span>
-                        <span
-                          className="dot me-2"
-                          style={{ background: "#E8879F" }}></span>
-                        Food
-                      </span>
-
-                      <span className="text-muted fw-bold">24%</span>
-                    </li>
-
-                    <li className="d-flex justify-content-between small mb-2">
-                      <span>
-                        <span
-                          className="dot me-2"
-                          style={{ background: "#9C8FC7" }}></span>
-                        Shopping
-                      </span>
-
-                      <span className="text-muted fw-bold">15%</span>
-                    </li>
-
-                    <li className="d-flex justify-content-between small mb-0">
-                      <span>
-                        <span
-                          className="dot me-2"
-                          style={{ background: "#6FA37A" }}></span>
-                        Transport
-                      </span>
-
-                      <span className="text-muted fw-bold">7%</span>
-                    </li>
+                          <span className="text-muted fw-bold">{percent}%</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               </div>
@@ -216,25 +275,18 @@ const Reports = () => {
                 </p>
 
                 <div className="bar-chart">
-                  <div className="bar-group">
-                    <div className="bar" style={{ height: "48%" }}></div>
-                    <small className="text-muted">Jun</small>
-                  </div>
-
-                  <div className="bar-group">
-                    <div className="bar" style={{ height: "56%" }}></div>
-                    <small className="text-muted">Jul</small>
-                  </div>
-
-                  <div className="bar-group">
-                    <div className="bar" style={{ height: "31%" }}></div>
-                    <small className="text-muted">Aug</small>
-                  </div>
-
-                  <div className="bar-group">
-                    <div className="bar" style={{ height: "32%" }}></div>
-                    <small className="text-muted">Sep</small>
-                  </div>
+                  {monthlyChartData.map((m) => (
+                    <div key={m.label} className="bar-group">
+                      <div className="bar-pair">
+                        <div
+                          className="bar exp"
+                          style={{
+                            height: `${(m.expense / maxExpense) * 100}%`,
+                          }}></div>
+                      </div>
+                      <small className="text-muted">{m.label}</small>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -247,10 +299,34 @@ const Reports = () => {
             <h2 className="h6 mb-0">Category Breakdown</h2>
 
             <p className="text-muted small mb-3">
-              Highest spending category: <b className="text-dark">Bills</b>
+              Highest spending category:{" "}
+              <b className="text-dark">{topCategory}</b>
             </p>
 
-            <div id="catBreakdownList"></div>
+            <div id="catBreakdownList">
+              {categoryList.map(([name, amount]) => {
+                const percent = Math.round((amount / totalExpense) * 100);
+                return (
+                  <div key={name} className="py-2 border-bottom">
+                    <div className="d-flex justify-content-between small mb-1">
+                      <span className="fw-bold">{name}</span>
+                      <span>
+                        ${amount}{" "}
+                        <span className="text-muted">({percent}%)</span>
+                      </span>
+                    </div>
+                    <div className="progress rounded-pill">
+                      <div
+                        className="progress-bar rounded-pill"
+                        style={{
+                          width: `${percent}%`,
+                          background: "#9C8FC7",
+                        }}></div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

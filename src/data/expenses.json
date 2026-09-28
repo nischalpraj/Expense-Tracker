@@ -41,262 +41,879 @@
   },
 
   "monthlySummaries": {
-    "Jun": {
-      "income": 1550,
-      "expense": 1080,
-      "transactionCount": 24,
-      "topCategory": "Bills",
-      "budgetUsagePct": 108
-    },
-    "Jul": {
-      "income": 1620,
-      "expense": 1240,
-      "transactionCount": 27,
-      "topCategory": "Bills",
-      "budgetUsagePct": 124
-    },
-    "Aug": {
-      "income": 1500,
-      "expense": 630,
-      "transactionCount": 7,
-      "topCategory": "Bills",
-      "budgetUsagePct": 63
-    },
-    "Sep": {
-      "income": 1700,
-      "expense": 720,
-      "transactionCount": 21,
-      "topCategory": "Bills",
-      "budgetUsagePct": 72
-    },
-    "Oct": null
+  "Jan": {
+    "income": 1500,
+    "expense": 378,
+    "transactionCount": 10,
+    "topCategory": "Food",
+    "budgetUsagePct": 38
   },
+  "Feb": {
+    "income": 1750,
+    "expense": 333,
+    "transactionCount": 10,
+    "topCategory": "Food",
+    "budgetUsagePct": 33
+  },
+  "Mar": {
+    "income": 1820,
+    "expense": 363,
+    "transactionCount": 10,
+    "topCategory": "Food",
+    "budgetUsagePct": 36
+  },
+  "Apr": {
+    "income": 1800,
+    "expense": 430,
+    "transactionCount": 10,
+    "topCategory": "Food",
+    "budgetUsagePct": 43
+  },
+  "May": {
+    "income": 1720,
+    "expense": 450,
+    "transactionCount": 10,
+    "topCategory": "Food",
+    "budgetUsagePct": 45
+  },
+  "Jun": {
+    "income": 1800,
+    "expense": 770,
+    "transactionCount": 10,
+    "topCategory": "Bills",
+    "budgetUsagePct": 77
+  },
+  "Jul": {
+    "income": 1820,
+    "expense": 840,
+    "transactionCount": 10,
+    "topCategory": "Bills",
+    "budgetUsagePct": 84
+  },
+  "Aug": {
+    "income": 1680,
+    "expense": 690,
+    "transactionCount": 8,
+    "topCategory": "Bills",
+    "budgetUsagePct": 69
+  },
+  "Sep": {
+    "income": 1800,
+    "expense": 720,
+    "transactionCount": 22,
+    "topCategory": "Bills",
+    "budgetUsagePct": 72
+  },
+  "Oct": null
+},
 
   "transactions": [
-    {
-      "id": 1,
-      "type": "income",
-      "category": "Salary",
-      "description": "Monthly salary",
-      "date": "2026-09-01",
-      "amount": 1500
-    },
-    {
-      "id": 2,
-      "type": "expense",
-      "category": "Food",
-      "description": "Lunch with friends",
-      "date": "2026-09-03",
-      "amount": 12
-    },
-    {
-      "id": 3,
-      "type": "expense",
-      "category": "Transport",
-      "description": "Bus ticket",
-      "date": "2026-09-04",
-      "amount": 5
-    },
-    {
-      "id": 4,
-      "type": "expense",
-      "category": "Shopping",
-      "description": "Casual sneakers",
-      "date": "2026-09-06",
-      "amount": 65
-    },
-    {
-      "id": 5,
-      "type": "income",
-      "category": "Freelance",
-      "description": "Website project",
-      "date": "2026-09-08",
-      "amount": 200
-    },
-    {
-      "id": 6,
-      "type": "expense",
-      "category": "Entertainment",
-      "description": "Movie night",
-      "date": "2026-09-10",
-      "amount": 15
-    },
-    {
-      "id": 7,
-      "type": "expense",
-      "category": "Bills",
-      "description": "Electricity bill",
-      "date": "2026-09-12",
-      "amount": 85
-    },
-    {
-      "id": 8,
-      "type": "expense",
-      "category": "Other",
-      "description": "Miscellaneous",
-      "date": "2026-09-15",
-      "amount": 15
-    },
-    {
-      "id": 9,
-      "type": "expense",
-      "category": "Health",
-      "description": "Doctor check-up copay",
-      "date": "2026-09-16",
-      "amount": 40
-    },
-    {
-      "id": 10,
-      "type": "expense",
-      "category": "Food",
-      "description": "Weekly groceries",
-      "date": "2026-09-14",
-      "amount": 120
-    },
-    {
-      "id": 11,
-      "type": "expense",
-      "category": "Food",
-      "description": "Morning coffee",
-      "date": "2026-09-18",
-      "amount": 6
-    },
-    {
-      "id": 12,
-      "type": "expense",
-      "category": "Bills",
-      "description": "Phone plan",
-      "date": "2026-09-19",
-      "amount": 35
-    },
-    {
-      "id": 13,
-      "type": "expense",
-      "category": "Entertainment",
-      "description": "Streaming subscription",
-      "date": "2026-09-20",
-      "amount": 13
-    },
-    {
-      "id": 14,
-      "type": "expense",
-      "category": "Transport",
-      "description": "Fuel top-up",
-      "date": "2026-09-21",
-      "amount": 45
-    },
-    {
-      "id": 15,
-      "type": "expense",
-      "category": "Bills",
-      "description": "Internet bill",
-      "date": "2026-09-22",
-      "amount": 40
-    },
-    {
-      "id": 16,
-      "type": "expense",
-      "category": "Food",
-      "description": "Dinner out",
-      "date": "2026-09-24",
-      "amount": 35
-    },
-    {
-      "id": 17,
-      "type": "expense",
-      "category": "Shopping",
-      "description": "New clothing",
-      "date": "2026-09-25",
-      "amount": 40
-    },
-    {
-      "id": 18,
-      "type": "expense",
-      "category": "Health",
-      "description": "Pharmacy",
-      "date": "2026-09-26",
-      "amount": 25
-    },
-    {
-      "id": 19,
-      "type": "expense",
-      "category": "Bills",
-      "description": "Water bill",
-      "date": "2026-09-27",
-      "amount": 20
-    },
-    {
-      "id": 20,
-      "type": "expense",
-      "category": "Bills",
-      "description": "Insurance",
-      "date": "2026-09-28",
-      "amount": 74
-    },
-    {
-      "id": 21,
-      "type": "expense",
-      "category": "Other",
-      "description": "Donation",
-      "date": "2026-09-23",
-      "amount": 30
-    },
+  {
+    "id": 1,
+    "type": "income",
+    "category": "Salary",
+    "description": "Monthly salary",
+    "date": "2026-01-01",
+    "amount": 1500
+  },
+  {
+    "id": 2,
+    "type": "expense",
+    "category": "Food",
+    "description": "New Year dinner",
+    "date": "2026-01-03",
+    "amount": 45
+  },
+  {
+    "id": 3,
+    "type": "expense",
+    "category": "Transport",
+    "description": "Bus and taxi fares",
+    "date": "2026-01-05",
+    "amount": 18
+  },
+  {
+    "id": 4,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Electricity bill",
+    "date": "2026-01-08",
+    "amount": 55
+  },
+  {
+    "id": 5,
+    "type": "expense",
+    "category": "Shopping",
+    "description": "New year clothes",
+    "date": "2026-01-12",
+    "amount": 75
+  },
+  {
+    "id": 6,
+    "type": "income",
+    "category": "Freelance",
+    "description": "Logo design project",
+    "date": "2026-01-15",
+    "amount": 180
+  },
+  {
+    "id": 7,
+    "type": "expense",
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2026-01-18",
+    "amount": 95
+  },
+  {
+    "id": 8,
+    "type": "expense",
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-01-22",
+    "amount": 20
+  },
+  {
+    "id": 9,
+    "type": "expense",
+    "category": "Health",
+    "description": "Pharmacy",
+    "date": "2026-01-25",
+    "amount": 30
+  },
+  {
+    "id": 10,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Internet bill",
+    "date": "2026-01-28",
+    "amount": 40
+  },
 
-    {
-      "id": 22,
-      "type": "income",
-      "category": "Salary",
-      "description": "Monthly salary",
-      "date": "2026-08-01",
-      "amount": 1500
-    },
-    {
-      "id": 23,
-      "type": "expense",
-      "category": "Bills",
-      "description": "Rent top-up",
-      "date": "2026-08-05",
-      "amount": 300
-    },
-    {
-      "id": 24,
-      "type": "expense",
-      "category": "Food",
-      "description": "Groceries",
-      "date": "2026-08-09",
-      "amount": 140
-    },
-    {
-      "id": 25,
-      "type": "expense",
-      "category": "Shopping",
-      "description": "Textbooks",
-      "date": "2026-08-14",
-      "amount": 90
-    },
-    {
-      "id": 26,
-      "type": "expense",
-      "category": "Transport",
-      "description": "Fuel",
-      "date": "2026-08-18",
-      "amount": 50
-    },
-    {
-      "id": 27,
-      "type": "expense",
-      "category": "Entertainment",
-      "description": "Concert ticket",
-      "date": "2026-08-22",
-      "amount": 60
-    },
-    {
-      "id": 28,
-      "type": "expense",
-      "category": "Health",
-      "description": "Gym membership",
-      "date": "2026-08-27",
-      "amount": 50
-    }
-  ]
-}
+  {
+    "id": 11,
+    "type": "income",
+    "category": "Salary",
+    "description": "Monthly salary",
+    "date": "2026-02-01",
+    "amount": 1500
+  },
+  {
+    "id": 12,
+    "type": "expense",
+    "category": "Food",
+    "description": "Lunch with friends",
+    "date": "2026-02-04",
+    "amount": 25
+  },
+  {
+    "id": 13,
+    "type": "expense",
+    "category": "Transport",
+    "description": "Fuel top-up",
+    "date": "2026-02-07",
+    "amount": 50
+  },
+  {
+    "id": 14,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Phone plan",
+    "date": "2026-02-10",
+    "amount": 35
+  },
+  {
+    "id": 15,
+    "type": "expense",
+    "category": "Shopping",
+    "description": "Backpack",
+    "date": "2026-02-13",
+    "amount": 55
+  },
+  {
+    "id": 16,
+    "type": "income",
+    "category": "Freelance",
+    "description": "Website project",
+    "date": "2026-02-16",
+    "amount": 250
+  },
+  {
+    "id": 17,
+    "type": "expense",
+    "category": "Food",
+    "description": "Groceries",
+    "date": "2026-02-19",
+    "amount": 110
+  },
+  {
+    "id": 18,
+    "type": "expense",
+    "category": "Entertainment",
+    "description": "Streaming subscription",
+    "date": "2026-02-21",
+    "amount": 15
+  },
+  {
+    "id": 19,
+    "type": "expense",
+    "category": "Education",
+    "description": "Study materials",
+    "date": "2026-02-24",
+    "amount": 65
+  },
+  {
+    "id": 20,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Water bill",
+    "date": "2026-02-27",
+    "amount": 20
+  },
+
+  {
+    "id": 21,
+    "type": "income",
+    "category": "Salary",
+    "description": "Monthly salary",
+    "date": "2026-03-01",
+    "amount": 1500
+  },
+  {
+    "id": 22,
+    "type": "expense",
+    "category": "Food",
+    "description": "Breakfast and coffee",
+    "date": "2026-03-03",
+    "amount": 18
+  },
+  {
+    "id": 23,
+    "type": "expense",
+    "category": "Transport",
+    "description": "Bus ticket",
+    "date": "2026-03-06",
+    "amount": 8
+  },
+  {
+    "id": 24,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Electricity bill",
+    "date": "2026-03-09",
+    "amount": 60
+  },
+  {
+    "id": 25,
+    "type": "expense",
+    "category": "Shopping",
+    "description": "Casual shoes",
+    "date": "2026-03-12",
+    "amount": 80
+  },
+  {
+    "id": 26,
+    "type": "income",
+    "category": "Business",
+    "description": "Small business income",
+    "date": "2026-03-15",
+    "amount": 320
+  },
+  {
+    "id": 27,
+    "type": "expense",
+    "category": "Food",
+    "description": "Monthly groceries",
+    "date": "2026-03-18",
+    "amount": 125
+  },
+  {
+    "id": 28,
+    "type": "expense",
+    "category": "Health",
+    "description": "Medicine",
+    "date": "2026-03-21",
+    "amount": 35
+  },
+  {
+    "id": 29,
+    "type": "expense",
+    "category": "Entertainment",
+    "description": "Gaming subscription",
+    "date": "2026-03-24",
+    "amount": 12
+  },
+  {
+    "id": 30,
+    "type": "expense",
+    "category": "Other",
+    "description": "Miscellaneous expense",
+    "date": "2026-03-27",
+    "amount": 25
+  },
+
+  {
+    "id": 31,
+    "type": "income",
+    "category": "Salary",
+    "description": "Monthly salary",
+    "date": "2026-04-01",
+    "amount": 1500
+  },
+  {
+    "id": 32,
+    "type": "expense",
+    "category": "Food",
+    "description": "Lunch",
+    "date": "2026-04-04",
+    "amount": 15
+  },
+  {
+    "id": 33,
+    "type": "expense",
+    "category": "Transport",
+    "description": "Fuel",
+    "date": "2026-04-07",
+    "amount": 45
+  },
+  {
+    "id": 34,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Internet bill",
+    "date": "2026-04-10",
+    "amount": 40
+  },
+  {
+    "id": 35,
+    "type": "income",
+    "category": "Freelance",
+    "description": "Frontend development work",
+    "date": "2026-04-13",
+    "amount": 300
+  },
+  {
+    "id": 36,
+    "type": "expense",
+    "category": "Shopping",
+    "description": "T-shirt and jeans",
+    "date": "2026-04-16",
+    "amount": 70
+  },
+  {
+    "id": 37,
+    "type": "expense",
+    "category": "Food",
+    "description": "Groceries",
+    "date": "2026-04-19",
+    "amount": 105
+  },
+  {
+    "id": 38,
+    "type": "expense",
+    "category": "Education",
+    "description": "Programming course",
+    "date": "2026-04-22",
+    "amount": 90
+  },
+  {
+    "id": 39,
+    "type": "expense",
+    "category": "Entertainment",
+    "description": "Movie tickets",
+    "date": "2026-04-25",
+    "amount": 25
+  },
+  {
+    "id": 40,
+    "type": "expense",
+    "category": "Other",
+    "description": "Gift",
+    "date": "2026-04-28",
+    "amount": 40
+  },
+
+  {
+    "id": 41,
+    "type": "income",
+    "category": "Salary",
+    "description": "Monthly salary",
+    "date": "2026-05-01",
+    "amount": 1500
+  },
+  {
+    "id": 42,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Electricity bill",
+    "date": "2026-05-04",
+    "amount": 65
+  },
+  {
+    "id": 43,
+    "type": "expense",
+    "category": "Food",
+    "description": "Restaurant dinner",
+    "date": "2026-05-07",
+    "amount": 35
+  },
+  {
+    "id": 44,
+    "type": "expense",
+    "category": "Transport",
+    "description": "Public transport",
+    "date": "2026-05-10",
+    "amount": 20
+  },
+  {
+    "id": 45,
+    "type": "income",
+    "category": "Freelance",
+    "description": "Graphic design project",
+    "date": "2026-05-13",
+    "amount": 220
+  },
+  {
+    "id": 46,
+    "type": "expense",
+    "category": "Shopping",
+    "description": "Headphones",
+    "date": "2026-05-16",
+    "amount": 85
+  },
+  {
+    "id": 47,
+    "type": "expense",
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2026-05-19",
+    "amount": 115
+  },
+  {
+    "id": 48,
+    "type": "expense",
+    "category": "Health",
+    "description": "Doctor visit",
+    "date": "2026-05-22",
+    "amount": 45
+  },
+  {
+    "id": 49,
+    "type": "expense",
+    "category": "Entertainment",
+    "description": "Concert ticket",
+    "date": "2026-05-25",
+    "amount": 50
+  },
+  {
+    "id": 50,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Phone plan",
+    "date": "2026-05-28",
+    "amount": 35
+  },
+
+  {
+    "id": 51,
+    "type": "income",
+    "category": "Salary",
+    "description": "Monthly salary",
+    "date": "2026-06-01",
+    "amount": 1550
+  },
+  {
+    "id": 52,
+    "type": "expense",
+    "category": "Food",
+    "description": "Lunch with friends",
+    "date": "2026-06-04",
+    "amount": 30
+  },
+  {
+    "id": 53,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Rent payment",
+    "date": "2026-06-07",
+    "amount": 400
+  },
+  {
+    "id": 54,
+    "type": "expense",
+    "category": "Transport",
+    "description": "Fuel top-up",
+    "date": "2026-06-10",
+    "amount": 50
+  },
+  {
+    "id": 55,
+    "type": "expense",
+    "category": "Shopping",
+    "description": "Clothing",
+    "date": "2026-06-13",
+    "amount": 75
+  },
+  {
+    "id": 56,
+    "type": "expense",
+    "category": "Food",
+    "description": "Groceries",
+    "date": "2026-06-16",
+    "amount": 120
+  },
+  {
+    "id": 57,
+    "type": "income",
+    "category": "Freelance",
+    "description": "Web development project",
+    "date": "2026-06-18",
+    "amount": 250
+  },
+  {
+    "id": 58,
+    "type": "expense",
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-06-21",
+    "amount": 20
+  },
+  {
+    "id": 59,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Internet bill",
+    "date": "2026-06-24",
+    "amount": 40
+  },
+  {
+    "id": 60,
+    "type": "expense",
+    "category": "Health",
+    "description": "Pharmacy",
+    "date": "2026-06-27",
+    "amount": 35
+  },
+
+  {
+    "id": 61,
+    "type": "income",
+    "category": "Salary",
+    "description": "Monthly salary",
+    "date": "2026-07-01",
+    "amount": 1620
+  },
+  {
+    "id": 62,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Rent payment",
+    "date": "2026-07-03",
+    "amount": 400
+  },
+  {
+    "id": 63,
+    "type": "expense",
+    "category": "Food",
+    "description": "Groceries",
+    "date": "2026-07-06",
+    "amount": 130
+  },
+  {
+    "id": 64,
+    "type": "expense",
+    "category": "Transport",
+    "description": "Fuel",
+    "date": "2026-07-09",
+    "amount": 55
+  },
+  {
+    "id": 65,
+    "type": "expense",
+    "category": "Shopping",
+    "description": "New shoes",
+    "date": "2026-07-12",
+    "amount": 90
+  },
+  {
+    "id": 66,
+    "type": "income",
+    "category": "Freelance",
+    "description": "Website maintenance",
+    "date": "2026-07-15",
+    "amount": 200
+  },
+  {
+    "id": 67,
+    "type": "expense",
+    "category": "Entertainment",
+    "description": "Weekend outing",
+    "date": "2026-07-18",
+    "amount": 35
+  },
+  {
+    "id": 68,
+    "type": "expense",
+    "category": "Health",
+    "description": "Medicine",
+    "date": "2026-07-21",
+    "amount": 40
+  },
+  {
+    "id": 69,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Electricity bill",
+    "date": "2026-07-24",
+    "amount": 60
+  },
+  {
+    "id": 70,
+    "type": "expense",
+    "category": "Food",
+    "description": "Dinner out",
+    "date": "2026-07-27",
+    "amount": 30
+  },
+
+  {
+    "id": 71,
+    "type": "income",
+    "category": "Salary",
+    "description": "Monthly salary",
+    "date": "2026-08-01",
+    "amount": 1500
+  },
+  {
+    "id": 72,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Rent top-up",
+    "date": "2026-08-05",
+    "amount": 300
+  },
+  {
+    "id": 73,
+    "type": "expense",
+    "category": "Food",
+    "description": "Groceries",
+    "date": "2026-08-09",
+    "amount": 140
+  },
+  {
+    "id": 74,
+    "type": "expense",
+    "category": "Shopping",
+    "description": "Textbooks",
+    "date": "2026-08-14",
+    "amount": 90
+  },
+  {
+    "id": 75,
+    "type": "expense",
+    "category": "Transport",
+    "description": "Fuel",
+    "date": "2026-08-18",
+    "amount": 50
+  },
+  {
+    "id": 76,
+    "type": "income",
+    "category": "Freelance",
+    "description": "Design project",
+    "date": "2026-08-20",
+    "amount": 180
+  },
+  {
+    "id": 77,
+    "type": "expense",
+    "category": "Entertainment",
+    "description": "Concert ticket",
+    "date": "2026-08-22",
+    "amount": 60
+  },
+  {
+    "id": 78,
+    "type": "expense",
+    "category": "Health",
+    "description": "Gym membership",
+    "date": "2026-08-27",
+    "amount": 50
+  },
+
+  {
+    "id": 79,
+    "type": "income",
+    "category": "Salary",
+    "description": "Monthly salary",
+    "date": "2026-09-01",
+    "amount": 1500
+  },
+  {
+    "id": 80,
+    "type": "expense",
+    "category": "Food",
+    "description": "Lunch with friends",
+    "date": "2026-09-03",
+    "amount": 12
+  },
+  {
+    "id": 81,
+    "type": "expense",
+    "category": "Transport",
+    "description": "Bus ticket",
+    "date": "2026-09-04",
+    "amount": 5
+  },
+  {
+    "id": 82,
+    "type": "expense",
+    "category": "Shopping",
+    "description": "Casual sneakers",
+    "date": "2026-09-06",
+    "amount": 65
+  },
+  {
+    "id": 83,
+    "type": "income",
+    "category": "Freelance",
+    "description": "Website project",
+    "date": "2026-09-08",
+    "amount": 200
+  },
+  {
+    "id": 84,
+    "type": "expense",
+    "category": "Entertainment",
+    "description": "Movie night",
+    "date": "2026-09-10",
+    "amount": 15
+  },
+  {
+    "id": 85,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Electricity bill",
+    "date": "2026-09-12",
+    "amount": 85
+  },
+  {
+    "id": 86,
+    "type": "expense",
+    "category": "Food",
+    "description": "Weekly groceries",
+    "date": "2026-09-14",
+    "amount": 120
+  },
+  {
+    "id": 87,
+    "type": "expense",
+    "category": "Other",
+    "description": "Miscellaneous",
+    "date": "2026-09-15",
+    "amount": 15
+  },
+  {
+    "id": 88,
+    "type": "expense",
+    "category": "Health",
+    "description": "Doctor check-up copay",
+    "date": "2026-09-16",
+    "amount": 40
+  },
+  {
+    "id": 89,
+    "type": "expense",
+    "category": "Food",
+    "description": "Morning coffee",
+    "date": "2026-09-18",
+    "amount": 6
+  },
+  {
+    "id": 90,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Phone plan",
+    "date": "2026-09-19",
+    "amount": 35
+  },
+  {
+    "id": 91,
+    "type": "expense",
+    "category": "Entertainment",
+    "description": "Streaming subscription",
+    "date": "2026-09-20",
+    "amount": 13
+  },
+  {
+    "id": 92,
+    "type": "expense",
+    "category": "Transport",
+    "description": "Fuel top-up",
+    "date": "2026-09-21",
+    "amount": 45
+  },
+  {
+    "id": 93,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Internet bill",
+    "date": "2026-09-22",
+    "amount": 40
+  },
+  {
+    "id": 94,
+    "type": "expense",
+    "category": "Other",
+    "description": "Donation",
+    "date": "2026-09-23",
+    "amount": 30
+  },
+  {
+    "id": 95,
+    "type": "expense",
+    "category": "Food",
+    "description": "Dinner out",
+    "date": "2026-09-24",
+    "amount": 35
+  },
+  {
+    "id": 96,
+    "type": "expense",
+    "category": "Shopping",
+    "description": "New clothing",
+    "date": "2026-09-25",
+    "amount": 40
+  },
+  {
+    "id": 97,
+    "type": "expense",
+    "category": "Health",
+    "description": "Pharmacy",
+    "date": "2026-09-26",
+    "amount": 25
+  },
+  {
+    "id": 98,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Water bill",
+    "date": "2026-09-27",
+    "amount": 20
+  },
+  {
+    "id": 99,
+    "type": "expense",
+    "category": "Bills",
+    "description": "Insurance",
+    "date": "2026-09-28",
+    "amount": 74
+  },
+  {
+    "id": 100,
+    "type": "income",
+    "category": "Gift",
+    "description": "Birthday gift",
+    "date": "2026-09-28",
+    "amount": 100
+  }
+]}
