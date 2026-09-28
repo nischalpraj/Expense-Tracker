@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import expenseData from "../data/expenses.json";
 import "./AddTransaction.css";
+import Swal from "sweetalert2"
 
 const AddTransactions = ({ onAdd }) => {
   const [type, setType] = useState("expense");
@@ -64,12 +65,22 @@ const AddTransactions = ({ onAdd }) => {
       amount: Number(amount),
     };
 
-    onAdd(newTransaction);
+   onAdd(newTransaction);
 
-    setAmount("");
-    setDate("");
-    setDescription("");
-    setSelectedCategory("");
+   Swal.fire({
+     icon: "success",
+     title: "Transaction added!",
+     text: `${newTransaction.description} — $${newTransaction.amount} has been saved.`,
+     confirmButtonText: "Great",
+     confirmButtonColor: "#3A3345",
+     timer: 2500,
+     timerProgressBar: true,
+   });
+
+   setAmount("");
+   setDate("");
+   setDescription("");
+   setSelectedCategory("");
   }
 
   return (
