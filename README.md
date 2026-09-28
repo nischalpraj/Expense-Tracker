@@ -259,28 +259,7 @@ The following screenshots demonstrate the main interfaces of the application.
 ![Reports text](image-2.png)
 
 
-> **Note:** Create a `screenshots` folder in the project root and place your screenshots inside it using the following names:
->
-> * `dashboard.png`
-> * `transactions.png`
-> * `reports.png`
 
-Example:
-
-```text
-personal-expense-tracker/
-│
-├── screenshots/
-│   ├── dashboard.png
-│   ├── transactions.png
-│   └── reports.png
-│
-├── src/
-├── package.json
-└── README.md
-```
-
----
 
 ## Data Source
 
